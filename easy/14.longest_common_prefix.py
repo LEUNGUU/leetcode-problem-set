@@ -30,20 +30,23 @@ class Solution:
     def longestCommonPrefix(self, strs: List[str]) -> str:
         if len(strs) == 0:
             return ''
-        elif len(strs) == 1:
-            return strs[0]
         else:
-            mid = len(strs) // 2
-            leftstr = self.longestCommonPrefix(strs[0:mid])
-            rightstr = self.longestCommonPrefix(strs[mid:])
-            return self.CheckPrefix(leftstr, rightstr)
+            min_length = len(strs[0])
+            for item in strs[1:]:
+                if len(item) < min_length:
+                    min_length = len(item)
+            start = 1
+            while start <= min_length:
+                mid = (start + min_length) // 2
+                if self.CheckPrefix(strs, mid):
+                    start = mid + 1
+                else:
+                    min_length = mid - 1
+            return strs[0][0:(start+min_length) // 2]
 
-    def CheckPrefix(self, leftstr: str, rightstr: str) -> str:
-        min_length = min(len(leftstr), len(rightstr))
-        for index in range(min_length):
-            if leftstr[index] != rightstr[index]:
-                return leftstr[0:index]
-        return leftstr[0:min_length]
-
-
-
+    def CheckPrefix(self, strs: List[str], lens: int) -> str:
+        prefix = strs[0][0:lens]
+        for item in strs:
+            if not item.startswith(prefix):
+                return False
+        return True
