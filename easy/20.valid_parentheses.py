@@ -52,12 +52,13 @@ class Solution:
             if item in '({[':
                 stack.append(item)
             elif item in ']})':
-                opening_bracket = stack.pop()
-                if parentheses_map[opening_bracket] != item:
+                if stack:
+                    opening_bracket = stack.pop()
+                    if parentheses_map[opening_bracket] != item:
+                        return False
+                else:
                     return False
         if not stack:
-            return False
-        else:
             return True
-                    
-        
+        else:
+            return False
