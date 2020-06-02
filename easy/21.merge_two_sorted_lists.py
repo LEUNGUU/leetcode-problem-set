@@ -1,19 +1,19 @@
 # Merge Two Sorted Lists
-# 
+#
 # [Easy] [AC:52.6% 962.7K of 1.8M]
 # [filetype:python3]
-# 
+#
 # Merge two sorted linked lists and return it
 # as a new sorted list. The new list should be
 # made by splicing together the nodes of the
 # first two lists.
-# 
+#
 # Example:
-# 
+#
 # Input: 1->2->4, 1->3->4
-# 
+#
 # Output: 1->1->2->3->4->4
-# 
+#
 # [End of Description]:
 # Definition for singly-linked list.
 # class ListNode:
@@ -45,6 +45,3 @@ class Solution:
                 pointer.next = new
                 pointer = pointer.next
         return head.next
-
-
-
