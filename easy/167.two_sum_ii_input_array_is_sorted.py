@@ -25,15 +25,25 @@
 #
 # [End of Description]:
 # hash table
+# class Solution:
+#     def twoSum(self, numbers: List[int], target: int) -> List[int]:
+#         res = {}
+#         for index, value in enumerate(numbers):
+#             rest = target - value
+#             if rest in res:
+#                 return [res[rest], index + 1]
+#             else:
+#                 res[value] = index + 1
+# two pointer
 class Solution:
     def twoSum(self, numbers: List[int], target: int) -> List[int]:
-        res = {}
-        for index, value in enumerate(numbers):
-            rest = target - value
-            if rest in res:
-                return [res[rest], index + 1]
+        pa, pb = 0, len(numbers) - 1
+        while pa < pb:
+            cur_sum = numbers[pa] + numbers[pb]
+            if cur_sum == target:
+                return [pa + 1, pb + 1]
+            elif cur_sum < target:
+                pa += 1
             else:
-                res[value] = index + 1
-# two pointer
-# class Solution:
-    # def twoSum(self, numbers: List[int], target: int) -> List[int]:
+                pb -= 1
+        return []
