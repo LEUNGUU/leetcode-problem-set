@@ -61,7 +61,7 @@ class MinStack:
         if not self._stack:
             node = (x, x)
         else:
-        # not empty
+            # not empty
             if self._stack[-1][1] < x:
                 node = (x, self._stack[-1][1])
             else:

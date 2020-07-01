@@ -47,7 +47,7 @@ class Solution:
         alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
         res = ""
         while n:
-            # alpha is starting from 0, but actually what we are doing is non-zero calculation 
+            # alpha is starting from 0, but actually what we are doing is non-zero calculation
             n -= 1
             res = alpha[n % 26] + res
             n //= 26
