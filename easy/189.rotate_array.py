@@ -76,5 +76,6 @@
 
 class Solution:
     def rotate(self, nums: List[int], k: int) -> None:
+        # k means steps, not elements need to be rotate
         k %= len(nums)
         nums[0:] = nums[-k:] + nums[:-k]
