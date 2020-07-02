@@ -53,6 +53,7 @@
 class Solution:
     def titleToNumber(self, s: str) -> int:
         abc = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        # from right to left
         rs = reversed(s)
         times = 0
         res = 0
