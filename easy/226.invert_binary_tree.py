@@ -44,6 +44,7 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
+# recursive
 class Solution:
     def invertTree(self, root: TreeNode) -> TreeNode:
         if root is None:
@@ -51,7 +52,21 @@ class Solution:
         # switch two children
         self.invertTree(root.left)
         self.invertTree(root.right)
-        temp = root.left
-        root.left = root.right
-        root.right = temp
+        root.left, root.right = root.right, root.left
         return root
+
+
+# iterative
+# class Solution:
+#     def invertTree(self, root: TreeNode) -> TreeNode:
+#         if root is None:
+#             return root
+#         node_list = [root]
+#         while node_list:
+#             node = node_list.pop()
+#             node.left, node.right = node.right, node.left
+#             if node.left is not None:
+#                 node_list.append(node.left)
+#             if node.right is not None:
+#                 node_list.append(node.right)
+#         return root
