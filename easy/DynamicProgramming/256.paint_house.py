@@ -29,17 +29,29 @@
 #              Minimum cost: 2 + 5 + 3 = 10.
 #
 # [End of Description]:
+from functools import lru_cache
+
+
 class Solution:
     def minCost(self, costs: List[List[int]]) -> int:
-        zero_cost = (0, -1)
-        minimum_cost = 0
-        for item in costs:
-            temp_cost = float("inf")
-            for index, cost in enumerate(item):
-                if cost < temp_cost and index != zero_cost[1]:
-                    temp_cost = cost
-                    next_cost = (temp_cost, index)
-            zero_cost = next_cost
-            print(zero_cost)
-            minimum_cost += next_cost[0]
-        return minimum_cost
+        """
+        :type costs: List[List[int]]
+        :rtype: int
+        """
+
+        @lru_cache(maxsize=None)
+        def paint_cost(n, color):
+            total_cost = costs[n][color]
+            if n == len(costs) - 1:
+                pass
+            elif color == 0:
+                total_cost += min(paint_cost(n + 1, 1), paint_cost(n + 1, 2))
+            elif color == 1:
+                total_cost += min(paint_cost(n + 1, 0), paint_cost(n + 1, 2))
+            else:
+                total_cost += min(paint_cost(n + 1, 0), paint_cost(n + 1, 1))
+            return total_cost
+
+        if costs == []:
+            return 0
+        return min(paint_cost(0, 0), paint_cost(0, 1), paint_cost(0, 2))
