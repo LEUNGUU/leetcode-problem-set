@@ -34,6 +34,7 @@
 #         return count <= 1
 from collections import defaultdict
 
+
 class Solution:
     def canPermutePalindrome(self, s: str) -> bool:
         countmap = defaultdict(int)
@@ -45,4 +46,3 @@ class Solution:
             else:
                 count += 1
         return count <= 1
-
