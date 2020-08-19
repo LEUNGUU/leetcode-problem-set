@@ -33,16 +33,20 @@
 # equal.
 #
 # [End of Description]:
+from collections import Counter
+
+
 class Solution:
     def getHint(self, secret: str, guess: str) -> str:
-        bull_count, cow_count = 0, 0
-        for index in range(len(secret)):
-            if secret[index] == guess[index]:
-                bull_count += 1
-        for i in secret:
-            for j in guess:
-                if i == j:
-                    cow_count += 1
-        if cow_count > 0:
-            cow_count -= bull_count
-        return f"{bull_count}A{cow_count}B"
+        h = Counter(secret)
+
+        bulls, cows = 0, 0
+        for index, number in enumerate(guess):
+            if number in h:
+                if number == secret[index]:
+                    bulls += 1
+                    cows -= int(h[number] <= 0)
+                else:
+                    cows += int(h[number] > 0)
+                h[number] -= 1
+        return f"{bulls}A{cows}B"
