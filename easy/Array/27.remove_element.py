@@ -56,9 +56,46 @@
 # }
 #
 # [End of Description]:
+
+# Two Pointer(no changes to array)
 class Solution:
     def removeElement(self, nums: List[int], val: int) -> int:
-        if len(nums) == 0:
+        n = len(nums)
+        if n == 0:
+            return 0
+        pointerA = 0
+        for pointerB in range(0, n):
+            if nums[pointerB] != val:
+                # actually we copy values much more times than needed
+                # in this algorithm
+                nums[pointerA] = nums[pointerB]
+                pointerA += 1
+        return pointerB
+
+
+# Two Pointer(modify the array by changing its values)
+class Solution:
+    def removeElement(self, nums: List[int], val: int) -> int:
+        n = len(nums)
+        if n == 0:
+            return 0
+        pointerA = 0
+        while pointerA < n:
+            if nums[pointerA] != val:
+                pointerA += 1
+            else:
+                nums[pointerA] = nums[n - 1]
+                # reduce the size of the array
+                n -= 1
+        return n
+
+
+# This is mine. It will changed the array by removing all the target values in array
+# since I modify the array dynamically, then we need to calculate the length of array
+class Solution:
+    def removeElement(self, nums: List[int], val: int) -> int:
+        n = len(nums)
+        if n == 0:
             return 0
         else:
             index = 0

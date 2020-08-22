@@ -19,12 +19,34 @@
 # return [0, 1].
 #
 # [End of Description]:
+# one-pass hash table [Accepted]
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         result = {}
         for index, value in enumerate(nums):
             res = target - value
             if res in result:
-                return [index, result[res]]
+                return [result[res], index]
             else:
                 result[value] = index
+
+
+# two-pass hash table [Accepted]
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        # generate a dict which key is element, value is index
+        nums_dict = {value: index for index, value in enumerate(nums)}
+        # loop over to find results
+        for index in range(len(nums)):
+            res = target - nums[index]
+            if res in nums_dict and nums_dict[res] != index:
+                return [index, nums_dict[res]]
+
+
+# Bruce Force [Not Accepted, Time exceeded]
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        for idx1 in range(len(nums)):
+            for idx2 in range(idx1 + 1, len(nums)):
+                if nums[idx1] + nums[idx2] == target:
+                    return [idx1, idx2]

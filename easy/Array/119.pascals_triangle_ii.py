@@ -24,6 +24,7 @@
 class Solution:
     def getRow(self, rowIndex: int) -> List[int]:
         triangle = []
+        # only generate from 0 to the specific rowIndex
         for num_row in range(rowIndex + 1):
             row = [None for _ in range(num_row + 1)]
             row[0], row[-1] = 1, 1

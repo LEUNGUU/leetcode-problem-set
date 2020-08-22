@@ -63,17 +63,40 @@
 # }
 #
 # [End of Description]:
+
+# Two Pointers(in case of the array is already sorted)
+
+# while loop version
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
-        if len(nums) == 0:
-            return 0
-        elif len(nums) == 1:
-            return 1
+        if len(nums) in [0, 1]:
+            return len(nums)
         else:
             i, j = 0, 1
             while j <= len(nums) - 1:
                 if nums[i] != nums[j]:
                     i += 1
+                    # if not equal, there are two cases:
+                    # 1. i + 1 = j, then value is not changed
+                    # 2. i + 1 < j, then values are swapped.
                     nums[i], nums[j] = nums[j], nums[i]
                 j += 1
+            return i + 1
+
+
+# for loop version
+class Solution:
+    def removeDuplicates(self, nums: List[int]) -> int:
+        n = len(nums)
+        if n in [0, 1]:
+            return n
+        else:
+            i = 0
+            for j in range(1, n):
+                if nums[i] != nums[j]:
+                    i += 1
+                    # if not equal, there are two cases:
+                    # 1. i + 1 = j, then value is not changed
+                    # 2. i + 1 < j, then values are swapped.
+                    nums[i], nums[j] = nums[j], nums[i]
             return i + 1
