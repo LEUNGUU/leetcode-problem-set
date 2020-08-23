@@ -22,26 +22,36 @@
 #
 # [End of Description]:
 
-# hashmap defaultdict
-# from collections import defaultdict
+# brute force(Not Accepted, Timeout)
 # class Solution:
 #     def majorityElement(self, nums: List[int]) -> int:
-#         cnt = defaultdict(int)
+#         majority = len(nums) // 2
 #         for item in nums:
-#             cnt[item] += 1
-#         for k, v in cnt.items():
-#             if v > (len(nums)/2):
-#                 return k
+#             count = sum(1 for num in nums if num == item)
+#             if count > majority:
+#                 return item
 
-# counter
+# HashMap
 # from collections import Counter
 # class Solution:
 #     def majorityElement(self, nums: List[int]) -> int:
-#         cnt = Counter(nums)
-#         return max(cnt.keys(), key=cnt.get)
+#         count = Counter(nums)
+#         return max(count.keys(), key=count.get)
 
-# sorting
+# sorting(since majority is more than n/2, it is save to pick the middle one after sorting)
+# class Solution:
+#     def majorityElement(self, nums: List[int]) -> int:
+#         nums.sort()
+#         return nums[len(nums) // 2]
+
+# randomization
+import random
+
+
 class Solution:
     def majorityElement(self, nums: List[int]) -> int:
-        nums.sort()
-        return nums[len(nums) // 2]
+        majority = len(nums) // 2
+        while True:
+            candidate = random.choice(nums)
+            if sum(1 for item in nums if item == candidate) > majority:
+                return candidate

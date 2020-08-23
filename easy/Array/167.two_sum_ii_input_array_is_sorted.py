@@ -24,26 +24,35 @@
 # Explanation: The sum of 2 and 7 is 9. Therefore index1 = 1, index2 = 2.
 #
 # [End of Description]:
-# hash table
-# class Solution:
-#     def twoSum(self, numbers: List[int], target: int) -> List[int]:
-#         res = {}
-#         for index, value in enumerate(numbers):
-#             rest = target - value
-#             if rest in res:
-#                 return [res[rest], index + 1]
-#             else:
-#                 res[value] = index + 1
+
 # two pointer
+# since the array is sorted in ascending order, then we can use two pointer
+# one from small to large, the other from large to small
 class Solution:
     def twoSum(self, numbers: List[int], target: int) -> List[int]:
-        pa, pb = 0, len(numbers) - 1
-        while pa < pb:
-            cur_sum = numbers[pa] + numbers[pb]
+        i, j = 0, len(numbers) - 1
+        while i < j:
+            cur_sum = numbers[i] + numbers[j]
             if cur_sum == target:
-                return [pa + 1, pb + 1]
+                return [i + 1, j + 1]
             elif cur_sum < target:
-                pa += 1
+                i += 1
             else:
-                pb -= 1
+                j -= 1
+        return []
+
+
+# binary search(Actually it is like two pointer, one is left and the other is right)
+class Solution:
+    def twoSum(self, numbers: List[int], target: int) -> List[int]:
+        left, right = 0, len(numbers) - 1
+        while left < right:
+            mid = left + (right - left) // 2
+            res = numbers[left] + numbers[right]
+            if res == target:
+                return [left + 1, right + 1]
+            elif res < target:
+                left = mid if numbers[mid] + numbers[right] < target else left + 1
+            else:
+                right = mid if numbers[mid] + numbers[left] > target else right - 1
         return []
