@@ -55,7 +55,24 @@
 #
 # [End of Description]:
 
+# add (peak - valley) one by one
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        n = len(prices)
+        i, maxProfit, peak, valley = 0, 0, prices[0], prices[0]
+        while i < n - 1:
+            while i < n - 1 and prices[i] >= prices[i + 1]:
+                i += 1
+            valley = prices[i]
+            while i < n - 1 and prices[i] <= prices[i + 1]:
+                i += 1
+            peak = prices[i]
+            maxProfit += peak - valley
+        return maxProfit
+
+
 # a mathmatics trick here
+# peak1 - valley1 + peak2 - valley2
 # p1-p0+p2-p1+p3-p2+...+p(n)-p(n-1) = p(n) - p0
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:

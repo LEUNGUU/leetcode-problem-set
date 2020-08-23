@@ -33,14 +33,27 @@
 # = 0.
 #
 # [End of Description]:
+
+# brute force(Not Accepted, Timeout)
+# In formal terms, we need to find max(prices[j]−prices[i]), for every i and j such that j > i.
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        length = len(prices)
-        if length <= 1:
-            return 0
+        n = len(prices)
+        max_profit = 0
+        for i in range(n):
+            for j in range(i + 1, n):
+                if prices[j] - prices[i] > max_profit:
+                    max_profit = prices[j] - prices[i]
+        return max_profit
+
+
+# one pass(We need to find the largest peak following the smallest valley)
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        n = len(prices)
         max_profit = 0
         min_price = float("inf")
-        for i in range(length):
+        for i in range(n):
             if prices[i] < min_price:
                 min_price = prices[i]
             else:
