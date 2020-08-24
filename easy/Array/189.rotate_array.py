@@ -47,6 +47,41 @@
 # k >= 0
 #
 # [End of Description]:
+
+# brute force(Not Accepted, Time Limit Exceeded)
+# class Solution:
+#     def rotate(self, nums: List[int], k: int) -> None:
+#         # speed up the rotation
+#         k %= len(nums)
+#
+#         for i in range(k):
+#             previous = nums[-1]
+#             for j in range(len(nums)):
+#                 nums[j], previous = previous, nums[j]
+
+# Using Extra Array
+class Solution:
+    def rotate(self, nums: List[int], k: int) -> None:
+        n = len(nums)
+        a = [0] * n
+        for i in range(n):
+            a[(i + k) % n] = nums[i]
+        nums[:] = a
+
+
+# Using Cyclic Replacement
+class Solution:
+    def rotate(self, nums: List[int], k: int) -> None:
+        n = len(nums)
+        k %= n
+
+        start, count = 0, 0
+        while count < n:
+            current, prev = start, nums[start]
+            while True:
+                next_idx = (current + k) % n
+
+
 # list manuplication
 # class Solution:
 #     def rotate(self, nums: List[int], k: int) -> None:
@@ -74,8 +109,8 @@
 #         self.reverse(nums, k, n - 1)
 
 
-class Solution:
-    def rotate(self, nums: List[int], k: int) -> None:
-        # k means steps, not elements need to be rotate
-        k %= len(nums)
-        nums[0:] = nums[-k:] + nums[:-k]
+# class Solution:
+#     def rotate(self, nums: List[int], k: int) -> None:
+#         # k means steps, not elements need to be rotate
+#         k %= len(nums)
+#         nums[0:] = nums[-k:] + nums[:-k]
