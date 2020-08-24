@@ -49,15 +49,15 @@
 # [End of Description]:
 
 # brute force(Not Accepted, Time Limit Exceeded)
-# class Solution:
-#     def rotate(self, nums: List[int], k: int) -> None:
-#         # speed up the rotation
-#         k %= len(nums)
-#
-#         for i in range(k):
-#             previous = nums[-1]
-#             for j in range(len(nums)):
-#                 nums[j], previous = previous, nums[j]
+class Solution:
+    def rotate(self, nums: List[int], k: int) -> None:
+        # speed up the rotation
+        k %= len(nums)
+
+        for i in range(k):
+            previous = nums[-1]
+            for j in range(len(nums)):
+                nums[j], previous = previous, nums[j]
 
 # Using Extra Array
 class Solution:
@@ -81,36 +81,38 @@ class Solution:
             while True:
                 next_idx = (current + k) % n
 
+# Using Reverse
+class Solution:
+    def reverse(self, nums: List[int], start: int, end: int) -> List[int]:
+        while start < end:
+            nums[start], nums[end] = nums[end], nums[start]
+            start, end = start + 1, end - 1
 
-# list manuplication
-# class Solution:
-#     def rotate(self, nums: List[int], k: int) -> None:
-#         """
-#         Do not return anything, modify nums in-place instead.
-#         """
-#         for _ in range(k):
-#             nums.insert(0, nums.pop())
-
-# class Solution:
-#     def reverse(self, nums: List[int], start: int, end: int) -> List[int]:
-#         while start < end:
-#             nums[start], nums[end] = nums[end], nums[start]
-#             start, end = start + 1, end - 1
-
-#     def rotate(self, nums: List[int], k: int) -> None:
-#         """
-#         Do not return anything, modify nums in-place instead.
-#         """
-#         n = len(nums)
-#         # k is not numbers of nums, it is numbers of steps
-#         k %= n
-#         self.reverse(nums, 0, n - 1)
-#         self.reverse(nums, 0, k - 1)
-#         self.reverse(nums, k, n - 1)
+    def rotate(self, nums: List[int], k: int) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        n = len(nums)
+        # k is not numbers of nums, it is numbers of steps
+        k %= n
+        self.reverse(nums, 0, n - 1)
+        self.reverse(nums, 0, k - 1)
+        self.reverse(nums, k, n - 1)
 
 
-# class Solution:
-#     def rotate(self, nums: List[int], k: int) -> None:
-#         # k means steps, not elements need to be rotate
-#         k %= len(nums)
-#         nums[0:] = nums[-k:] + nums[:-k]
+# list manuplication(Accepted, but not recommended)
+class Solution:
+    def rotate(self, nums: List[int], k: int) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        for _ in range(k):
+            nums.insert(0, nums.pop())
+
+
+# leverge Python list feature
+class Solution:
+    def rotate(self, nums: List[int], k: int) -> None:
+        # k means steps, not elements need to be rotate
+        k %= len(nums)
+        nums[0:] = nums[-k:] + nums[:-k]
