@@ -29,16 +29,17 @@
 #
 # [End of Description]:
 
-#brute-force(Not Accepted, Time Exceeded)
+# brute-force(Not Accepted, Time Exceeded)
 class Solution:
     def containsDuplicate(self, nums: List[int]) -> bool:
         for i in range(len(nums)):
-            for j in range(i+1, len(nums)):
+            for j in range(i + 1, len(nums)):
                 if nums[i] == nums[j]:
                     return True
         return False
 
 
+# Hash Table
 class Solution:
     def containsDuplicate(self, nums: List[int]) -> bool:
         check = set()
@@ -49,6 +50,7 @@ class Solution:
         return False
 
 
+# Sorting
 class Solution:
     def containsDuplicate(self, nums: List[int]) -> bool:
         nums.sort()
@@ -56,3 +58,9 @@ class Solution:
             if nums[i] == nums[i - 1]:
                 return True
         return False
+
+
+# 1-line Sorting
+class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        return len(set(nums)) < len(nums)

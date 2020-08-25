@@ -33,6 +33,7 @@ class Solution:
             if nums[i] in check:
                 return True
             check.add(nums[i])
+            # keep a sliding window of k elements
             if len(check) > k:
                 check.remove(nums[i - k])
         return False
