@@ -29,6 +29,7 @@
 # @param version, an integer
 # @return an integer
 # def isBadVersion(version):
+
 # binary search
 class Solution:
     def firstBadVersion(self, n):

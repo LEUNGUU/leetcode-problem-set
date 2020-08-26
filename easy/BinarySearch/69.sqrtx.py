@@ -27,10 +27,37 @@
 #              the decimal part is truncated, 2 is returned.
 #
 # [End of Description]:
+# Not quite safe
 # class Solution:
 #     def mySqrt(self, x: int) -> int:
 #         return int(sqrt(x))
+
+# a mathmatics method
+# sqrt(x) = e** (1/2) * log(x)
+class Solution:
+    def mySqrt(self, x: int) -> int:
+        if x < 2:
+            return x
+
+        left = int(e**(0.5 * log(x)))
+        right = left + 1
+
+        return left if right * right > x else right
+
+# Recursion and Bits Shifts
+class Solution:
+    def mySqrt(self, x: int) -> int:
+        if x < 2:
+            return x
+
+        left = self.mySqrt(x >> 2) << 1
+        right = left + 1
+
+        return left if right * right > x else right
+
+
 # we use binary search here
+# For x ≥ 2 the square root is always smaller than x/2 and larger than 0 : 0 < a < x/2.
 class Solution:
     def mySqrt(self, x: int) -> int:
         if x < 2:
@@ -40,12 +67,13 @@ class Solution:
         while left <= right:
             pivot = (left + right) // 2
             if pivot * pivot > x:
-                # we should move to left
+                # we should move right pointer to left
                 right = pivot - 1
             elif pivot * pivot < x:
-                # we should move to right
+                # we should move left pointer to right
                 left = pivot + 1
             else:
+                # we found the exact value
                 return pivot
         # because when left larger than right, right is the floor of sqrt(x), then we return right
         return right

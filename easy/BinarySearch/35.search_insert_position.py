@@ -33,10 +33,12 @@
 # Output: 0
 #
 # [End of Description]:
+# Binary search
+# Binary search is a search algorithm that find the position of a target value within a sorted array.
 class Solution:
     def searchInsert(self, nums: List[int], target: int) -> int:
-        lenOfnums = len(nums)
-        left, right = 0, lenOfnums - 1
+        n = len(nums)
+        left, right = 0, n - 1
         while left <= right:
             mid = (left + right) // 2
             if nums[mid] > target:

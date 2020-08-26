@@ -33,29 +33,32 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
-# class Solution:
-#     def closestValue(self, root: TreeNode, target: float) -> int:
-#         stack = []
-#         minimum = float("inf")
-#         res = 0
-#         stack.append(root)
-#         while stack:
-#             node = stack.pop()
-#             if abs(node.val - target) < minimum:
-#                 minimum = abs(node.val - target)
-#                 res = node.val
-#             if node.left is not None:
-#                 stack.append(node.left)
-#             if node.right is not None:
-#                 stack.append(node.right)
-#         return res
-# inorder traversal and compare to find
-# class Solution:
-#     def closestValue(self, root: TreeNode, target: float) -> int:
-#         return min(self.inorder(root), key= lambda x: abs(target - x))
-#
-#     def inorder(self, r: TreeNode) -> List[int]:
-#         return self.inorder(r.left) + [r.val] + self.inorder(r.right) if r else []
+
+# Iterative Inorder, O(k) time
+# Actually it is BFS.
+# This works fine when index k of closest element is much smaller than the tree height H.
+class Solution:
+    def closestValue(self, root: TreeNode, target: float) -> int:
+        stack, minimum, res = [], float('-inf'), 0
+        stack.append(root)
+        while stack:
+            node = stack.pop()
+            if abs(node.val - target) < minimum:
+                minimum = abs(node.val - target)
+                res = node.val
+            if node.left is not None:
+                stack.append(node.left)
+            if node.right is not None:
+                stack.append(node.right)
+        return res
+
+# Recursive Inorder + Linear search, O(N) time
+class Solution:
+    def closestValue(self, root: TreeNode, target: float) -> int:
+        return min(self.inorder(root), key= lambda x: abs(target - x))
+
+    def inorder(self, r: TreeNode) -> List[int]:
+        return self.inorder(r.left) + [r.val] + self.inorder(r.right) if r else []
 
 # binary search
 class Solution:
