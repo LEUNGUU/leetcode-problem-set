@@ -51,6 +51,17 @@
 # you optimize it?
 #
 # [End of Description]:
+# Bit by Bit reverse
+# The key idea is that for a bit that is situated at the index i, after the reversion, its
+# position should be 31 - i (note: the index starts from zero)
+#
+# We iterate through the bit string of the input integer, from right to left (i.e. n = n >> 1).
+# To retrieve the right-most bit of an integer, we apply the bit AND operation (n & 1).
+#
+# For each bit, we reverse it to the correct position (i.e. (n & 1) << power).
+# Then we accumulate this reversed bit to the final result.
+#
+# When there is no more bits of one left (i.e. n == 0), we terminate the iteration.
 class Solution:
     def reverseBits(self, n: int) -> int:
         res, power = 0, 31
@@ -59,3 +70,32 @@ class Solution:
             n = n >> 1
             power -= 1
         return res
+
+
+# Byte by Byte with Memorization
+# We iterate over the bytes of an integer. To retrieve the right-most byte in an integer,
+# again we apply the bit AND operation (i.e. n & 0xff) with the bit mask of 11111111.
+#
+# For each byte, first we reverse the bits within the byte,
+# via a function called reverseByte(byte).
+# Then we shift the reversed bits to their final positions.
+#
+# With the function reverseByte(byte),
+# we apply the technique of memoization,
+# which caches the result of the function and
+# returns the result directly for the future invocations of the same input.
+import functools
+
+
+class Solution:
+    def reverseBits(self, n: int) -> int:
+        res, power = 0, 24
+        while n:
+            res += self.reverseByte(n & 0xFF) << power
+            n = n >> 8
+            power -= 8
+        return res
+
+    @functools.lru_cache(maxsize=256)
+    def reverseByte(self, byte):
+        return (byte * 0x0202020202 & 0x010884422010) % 1023
