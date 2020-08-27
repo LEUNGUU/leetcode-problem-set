@@ -27,6 +27,8 @@
 # find(6) -> false
 #
 # [End of Description]:
+
+# Two Pointer with Sorted list
 class TwoSum:
     def __init__(self):
         """
@@ -41,6 +43,7 @@ class TwoSum:
         Time complexity is O(nlogn) timsort
         """
         self._container.append(number)
+        self._isSorted = False
 
     def find(self, value: int) -> bool:
         """
@@ -49,16 +52,38 @@ class TwoSum:
         """
         if not self._isSorted:
             self._container.sort()
-        pa, pb = 0, len(self._container) - 1
-        while pa < pb:
-            cur_sum = self._container[pa] + self._container[pb]
+        i, j = 0, len(self._container) - 1
+        while i < j:
+            cur_sum = self._container[i] + self._container[j]
             if cur_sum > value:
-                pb -= 1
+                j -= 1
             elif cur_sum < value:
-                pa += 1
-            else:
+                i += 1
+            else: # cur_sum == value
                 return True
         return False
+
+# HashTable
+class TwoSum:
+    def __init__(self):
+        self.num_counts = {}
+
+    def add(self, number):
+        if number in self.num_counts:
+            self.num_counts[number] += 1
+        else:
+            self.num_counts[number] = 1
+
+    def find(self, value):
+        for num in self.num_counts.keys():
+            res = value - num
+            # case like 4 + 4 = 8
+            if res != num:
+                if res in self.num_counts:
+                    return True
+            elif self.num_counts[num] > 1:
+                return True
+
 
 
 # Your TwoSum object will be instantiated and called as such:
