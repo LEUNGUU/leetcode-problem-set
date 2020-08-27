@@ -67,7 +67,14 @@
 #             cur_sum = max(nums[i], cur_sum + nums[i])
 #             max_sum = max(max_sum, cur_sum)
 #         return max_sum
-# dynamic programming
+
+# Dynamic Programming (Kadane's Algorithm)
+# There are two standard DP approaches suitable for arrays:
+# 1. Constant space one. Move along the array and modify the array itself.
+# 2. Linear space one. First move in the direction left->right,
+#    then in the direction right->left. Combine the results.
+# We use first approach here since one could modify the array to
+# track the current local maximum sum at this given point.
 class Solution:
     def maxSubArray(self, nums: List[int]) -> int:
         max_sum = nums[0]
