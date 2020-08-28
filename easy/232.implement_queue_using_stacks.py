@@ -65,6 +65,7 @@ class MyQueue:
     def empty(self) -> bool:
         return not self._stack1
 
+
 # Two Stacks(Push O(1), Pop O(n))
 class MyQueue:
     def __init__(self):

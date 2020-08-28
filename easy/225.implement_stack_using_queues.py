@@ -43,6 +43,7 @@
 # Two Queues (Push O(1), Pop O(n))
 from collections import deque
 
+
 class MyStack:
     def __init__(self):
         """
@@ -56,7 +57,6 @@ class MyStack:
         """
         self._queue.append(x)
 
-
     def pop(self) -> int:
         """
         Removes the element on top of the stack and returns that element.
@@ -67,7 +67,6 @@ class MyStack:
         res = self._queue.popleft()
         self._queue = tmp
         return res
-
 
     def top(self) -> int:
         """
@@ -81,8 +80,10 @@ class MyStack:
         """
         return not self._queue
 
+
 # Two Queues (Push O(n), Pop O(1))
 from collections import deque
+
 
 class MyStack:
     def __init__(self):
@@ -107,8 +108,10 @@ class MyStack:
     def empty(self) -> bool:
         return not self._queue
 
+
 # One Queue (Push O(n), Pop O(1))
 from collections import deque
+
 
 class MyStack:
     def __init__(self):

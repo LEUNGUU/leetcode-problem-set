@@ -57,7 +57,7 @@ class Solution:
 # [a, a, c, b, c]: 2*(a+b+c) - (a+a+c+b+c) = b
 class Solution:
     def singleNumber(self, nums: List[int]) -> int:
-        return 2*sum(set(nums)) - sum(nums)
+        return 2 * sum(set(nums)) - sum(nums)
 
 
 # Bit Manipulation

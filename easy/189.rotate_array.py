@@ -59,6 +59,7 @@ class Solution:
             for j in range(len(nums)):
                 nums[j], previous = previous, nums[j]
 
+
 # Using Extra Array
 class Solution:
     def rotate(self, nums: List[int], k: int) -> None:
@@ -80,6 +81,7 @@ class Solution:
             current, prev = start, nums[start]
             while True:
                 next_idx = (current + k) % n
+
 
 # Using Reverse
 class Solution:

@@ -39,7 +39,7 @@
 # This works fine when index k of closest element is much smaller than the tree height H.
 class Solution:
     def closestValue(self, root: TreeNode, target: float) -> int:
-        stack, minimum, res = [], float('-inf'), 0
+        stack, minimum, res = [], float("-inf"), 0
         stack.append(root)
         while stack:
             node = stack.pop()
@@ -52,13 +52,15 @@ class Solution:
                 stack.append(node.right)
         return res
 
+
 # Recursive Inorder + Linear search, O(N) time
 class Solution:
     def closestValue(self, root: TreeNode, target: float) -> int:
-        return min(self.inorder(root), key= lambda x: abs(target - x))
+        return min(self.inorder(root), key=lambda x: abs(target - x))
 
     def inorder(self, r: TreeNode) -> List[int]:
         return self.inorder(r.left) + [r.val] + self.inorder(r.right) if r else []
+
 
 # binary search
 class Solution:

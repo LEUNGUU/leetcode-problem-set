@@ -59,9 +59,10 @@ class TwoSum:
                 j -= 1
             elif cur_sum < value:
                 i += 1
-            else: # cur_sum == value
+            else:  # cur_sum == value
                 return True
         return False
+
 
 # HashTable
 class TwoSum:
@@ -83,7 +84,6 @@ class TwoSum:
                     return True
             elif self.num_counts[num] > 1:
                 return True
-
 
 
 # Your TwoSum object will be instantiated and called as such:
