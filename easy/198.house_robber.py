@@ -43,6 +43,14 @@
 #
 # [End of Description]:
 # DP method, consider the simplest cases first, then drive a more complicated one.
+
+# Let us look at the case n = 1, clearly f(1) = A1.
+# Now, let us look at n = 2, which f(2) = max(A1, A2).
+# For n = 3, you have basically the following two options:
+# 1. Rob the third house, and add its amount to the first house's amount.
+# 2. Do not rob the third house, and stick with the maximum amount of the first two houses.
+# f(k) = max(f(k – 2) + Ak, f(k – 1))
+# We choose base case asd f(-1) = f(0) = 0
 class Solution:
     def rob(self, nums: List[int]) -> int:
         first_sum, second_sum = 0, 0
