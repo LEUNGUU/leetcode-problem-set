@@ -28,14 +28,16 @@
 #
 # [End of Description]:
 
-# class NumArray:
-#
-#     def __init__(self, nums: List[int]):
-#         self.nums = nums
-#
-#     def sumRange(self, i: int, j: int) -> int:
-#         # return sum([self.nums[idx] for idx in range(i, j+1)])
-#         return sum(self.nums[i:j+1])
+# Not a formal solution, my own one
+class NumArray:
+    def __init__(self, nums: List[int]):
+        self.nums = nums
+
+    def sumRange(self, i: int, j: int) -> int:
+        # return sum([self.nums[idx] for idx in range(i, j+1)])
+        return sum(self.nums[i : j + 1])
+
+
 # Caching
 class NumArray:
     def __init__(self, nums: List[int]):
