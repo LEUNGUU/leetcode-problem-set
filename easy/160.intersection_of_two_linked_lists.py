@@ -65,20 +65,21 @@
 #         self.val = x
 #         self.next = None
 
-
+#  we can have brute force and hash table solution
+# Two pointer
 class Solution:
     def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> ListNode:
         if headA is None or headB is None:
             return None
-        pa = headA
-        pb = headB
-        while pa != pb:
-            if pa is None:
-                pa = headB
+        pointerA = headA
+        pointerB = headB
+        while pointerA != pointerB:
+            if pointerA is None:
+                pointerA = headB
             else:
-                pa = pa.next
-            if pb is None:
-                pb = headA
+                pointerA = pointerA.next
+            if pointerB is None:
+                pointerB = headA
             else:
-                pb = pb.next
-        return pa
+                pointerB = pointerB.next
+        return pointerA

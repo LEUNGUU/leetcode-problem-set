@@ -32,27 +32,33 @@
 # [End of Description]:
 
 # Detect cycle with hashset(we use set here due to justify an element in set cost O(1))
-# class Solution:
-#     def isHappy(self, n: int) -> bool:
-#         seen = set()
-#         while n != 1 and n not in seen:
-#             seen.add(n)
-#             n = self.get_next(n)
-#         return n == 1
+class Solution:
+    def isHappy(self, n: int) -> bool:
+        seen = set()
+        while n != 1 and n not in seen:
+            seen.add(n)
+            n = self.get_next(n)
+        return n == 1
 
-#     def get_next(self, n: int) -> int:
-#         total = 0
-#         while n > 0:
-#             n, digits = divmod(n, 10)
-#             total += digits ** 2
-#         return total
+    def get_next(self, n: int) -> int:
+        total = 0
+        while n > 0:
+            n, digits = divmod(n, 10)
+            total += digits ** 2
+        return total
+
 
 # two pointer
+# we can therefore use Floyd's Cycle-Finding Algorithm here.
+# This algorithm is based on 2 runners running around a circular race track,
+# a fast runner and a slow runner. In reference to a famous fable,
+# many people call the slow runner the "tortoise" and the fast runner the "hare".
 class Solution:
     def isHappy(self, n: int) -> bool:
         slow_runner = n
         fast_runner = self.get_next(n)
-        while fast_runner != 1 and fast_runner != slow_runner:
+        # while fast_runner != 1 and fast_runner != slow_runner:
+        while fast_runner not in (1, slow_runner):
             slow_runner = self.get_next(slow_runner)
             fast_runner = self.get_next(self.get_next(fast_runner))
         return fast_runner == 1

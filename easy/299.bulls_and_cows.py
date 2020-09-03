@@ -42,11 +42,39 @@ class Solution:
 
         bulls, cows = 0, 0
         for index, number in enumerate(guess):
+            # corresponding characters match
             if number in h:
                 if number == secret[index]:
+                    # update the bulls
                     bulls += 1
+                    # update the cows
+                    # if all numbers from secret
+                    # were used up
                     cows -= int(h[number] <= 0)
+                # coresponding number dont match
                 else:
+                    # update the cows
                     cows += int(h[number] > 0)
+                # number was used
                 h[number] -= 1
+        return f"{bulls}A{cows}B"
+
+
+# One pass
+from collections import defaultdict
+
+
+class Solution:
+    def getHint(self, secret: str, guess: str) -> str:
+        h = defaultdict(int)
+        bulls, cows = 0, 0
+
+        for index, s in enumerate(secret):
+            g = guess[index]
+            if s == g:
+                bulls += 1
+            else:
+                cows += int(h[s] < 0) + int(h[g] > 0)
+                h[s] += 1
+                h[g] -= 1
         return f"{bulls}A{cows}B"

@@ -26,33 +26,37 @@
 #     def __init__(self, val=0, next=None):
 #         self.val = val
 #         self.next = next
-# Copy to array and compare with array
-# class Solution:
-#     def isPalindrome(self, head: ListNode) -> bool:
-#         vals = []
-#         cur = head
-#         while cur is not None:
-#             vals.append(cur.val)
-#             cur = cur.next
-#         return vals == vals[::-1]
+# Copy to array and use two pointer
+class Solution:
+    def isPalindrome(self, head: ListNode) -> bool:
+        vals = []
+        cur = head
+        while cur is not None:
+            vals.append(cur.val)
+            cur = cur.next
+        return vals == vals[::-1]
 
-# recursive, worst than the first one, since this method limits the maximum element of linked list
+
+# recursive, worst than the first one,
+# since this method limits the maximum element of linked list
 # that can be handled due to the maximum stack frame of Python(which is 1000)
-# class Solution:
-#     def isPalindrome(self, head: ListNode) -> bool:
-#         self.first_pointer = head
+class Solution:
+    def isPalindrome(self, head: ListNode) -> bool:
+        self.first_pointer = head
 
-#         def recursiveCheck(current_node=head):
-#             if current_node is not None:
-#                 if not recursiveCheck(current_node.next):
-#                     return False
-#                 if self.first_pointer.val != current_node.val:
-#                     return False
-#                 self.first_pointer = self.first_pointer.next
-#             return True
-#         return recursiveCheck()
+        def recursiveCheck(current_node=head):
+            if current_node is not None:
+                if not recursiveCheck(current_node.next):
+                    return False
+                if self.first_pointer.val != current_node.val:
+                    return False
+                self.first_pointer = self.first_pointer.next
+            return True
+
+        return recursiveCheck()
 
 
+# Reverse second half in-place
 class Solution:
     def isPalindrome(self, head: ListNode) -> bool:
         if head is None:

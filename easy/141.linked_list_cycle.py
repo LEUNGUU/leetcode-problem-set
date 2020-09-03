@@ -45,17 +45,19 @@
 #         self.val = x
 #         self.next = None
 
+# Hash Tables
 # list to record nodes' references
-# class Solution:
-#     def hasCycle(self, head: ListNode) -> bool:
-#         vals = []
-#         while head is not None:
-#             if head not in vals:
-#                 vals.append(head)
-#             else:
-#                 return True
-#             head = head.next
-#         return False
+class Solution:
+    def hasCycle(self, head: ListNode) -> bool:
+        vals = []
+        while head is not None:
+            if head not in vals:
+                vals.append(head)
+            else:
+                return True
+            head = head.next
+        return False
+
 
 # two pointers, one is slow pointer and the other is fast pointer
 class Solution:

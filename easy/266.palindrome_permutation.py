@@ -23,15 +23,19 @@
 # Output: true
 #
 # [End of Description]:
-# from collections import Counter
-#
-# class Solution:
-#     def canPermutePalindrome(self, s: str) -> bool:
-#         countmap = Counter(s)
-#         count = 0
-#         for item in countmap.values():
-#             count += item % 2
-#         return count <= 1
+from collections import Counter
+
+
+class Solution:
+    def canPermutePalindrome(self, s: str) -> bool:
+        countmap = Counter(s)
+        count = 0
+        for item in countmap.values():
+            count += item % 2
+        return count <= 1
+
+
+# Single Pass
 from collections import defaultdict
 
 
@@ -46,3 +50,15 @@ class Solution:
             else:
                 count += 1
         return count <= 1
+
+
+# Use Set (Actually we can use array here due to we dont use the specific feature of set)
+class Solution:
+    def canPermutePalindrome(self, s: str) -> bool:
+        countSet = set()
+        for item in s:
+            if item not in countSet:
+                countSet.add(item)
+            else:
+                countSet.remove(item)
+        return len(countSet) <= 1

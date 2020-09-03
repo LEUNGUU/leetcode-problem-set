@@ -27,6 +27,7 @@
 # your solution to such case?
 #
 # [End of Description]:
+
 # Hashmap
 from collections import defaultdict
 

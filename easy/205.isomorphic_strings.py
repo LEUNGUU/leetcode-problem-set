@@ -47,7 +47,8 @@ class Solution:
                 # we cannot make it an 'and' condition
                 if alph[s[i]] != t[i]:
                     return False
-            # s[i] not in alph, then before we add it to alph, we need to confirm t[i] is not in alph
+            # s[i] not in alph, then before we add it to alph,
+            # we need to confirm t[i] is not in alph
             elif t[i] in list(alph.values()):
                 return False
             else:

@@ -37,6 +37,30 @@
 # a single space.
 #
 # [End of Description]:
+# Two Hash Maps
+class Solution:
+    def wordPattern(self, pattern: str, str: str) -> bool:
+        charMap = {}
+        wordMap = {}
+
+        words = str.split(" ")
+        if len(words) != len(pattern):
+            return False
+
+        for c, w in zip(pattern, words):
+            if c not in charMap:
+                if w in wordMap:
+                    return False
+                else:
+                    charMap[c] = w
+                    wordMap[w] = c
+            else:
+                if charMap[c] != w:
+                    return False
+        return True
+
+
+# Single Index Hash Map
 class Solution:
     def wordPattern(self, pattern: str, str: str) -> bool:
         map_index = {}

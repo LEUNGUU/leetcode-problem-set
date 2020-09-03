@@ -23,6 +23,8 @@
 #     def __init__(self, val=0, next=None):
 #         self.val = val
 #         self.next = next
+
+# Straight-Forward
 class Solution:
     def deleteDuplicates(self, head: ListNode) -> ListNode:
         current = head
