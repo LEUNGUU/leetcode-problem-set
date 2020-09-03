@@ -27,6 +27,7 @@
 # Each string is either "0" or doesn't contain any leading zero.
 #
 # [End of Description]:
+# Bit-by-Bit Computation
 class Solution:
     def addBinary(self, a: str, b: str) -> str:
         max_len = max(len(a), len(b))
@@ -52,3 +53,12 @@ class Solution:
         result.reverse()
 
         return "".join(result)
+
+# Bit Manipulation
+class Solution:
+    def addBinary(self, a, b) -> str:
+        x, y = int(a, 2), int(b, 2)
+        while y:
+            x, y = x ^ y, (x & y) << 1
+        return bin(x)[2:]
+

@@ -30,6 +30,7 @@
 # overflows.
 #
 # [End of Description]:
+# Pop and Push Digits & Check before Overflow
 class Solution:
     def reverse(self, x: int) -> int:
         result = 0

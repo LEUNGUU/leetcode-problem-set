@@ -33,6 +33,7 @@
 # Coud you solve it without converting the integer to a string?
 #
 # [End of Description]:
+# Revert half of the number
 class Solution:
     def isPalindrome(self, x: int) -> bool:
         if (x < 0) or (x % 10 == 0 and x != 0):
