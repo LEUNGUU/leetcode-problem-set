@@ -38,28 +38,35 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
-# from typing import Dict
 
-# class Solution:
-#     def levelOrderBottom(self, root: TreeNode) -> List[List[int]]:
-#         dfs_result = {}
-#         dfs_result = self.traverse(root, 1, dfs_result)
+# RecursionL DFS
+from typing import Dict
 
-#         result = []
-#         for key in reversed(dfs_result.keys()):
-#             result.append(dfs_result[key])
-#         return result
 
-#     # DFS
-#     def traverse(self, node: TreeNode, level: int, dictionary: Dict[int, List[int]]) -> Dict[int, List[int]]:
-#         if node:
-#             if level not in dictionary:
-#                 dictionary.update({level:[]})
-#             dictionary[level].append(node.val)
-#             self.traverse(node.left, level + 1, dictionary)
-#             self.traverse(node.right, level + 1, dictionary)
-#         return dictionary
+class Solution:
+    def levelOrderBottom(self, root: TreeNode) -> List[List[int]]:
+        dfs_result = {}
+        dfs_result = self.traverse(root, 1, dfs_result)
 
+        result = []
+        for key in reversed(dfs_result.keys()):
+            result.append(dfs_result[key])
+        return result
+
+    # DFS
+    def traverse(
+        self, node: TreeNode, level: int, dictionary: Dict[int, List[int]]
+    ) -> Dict[int, List[int]]:
+        if node:
+            if level not in dictionary:
+                dictionary.update({level: []})
+            dictionary[level].append(node.val)
+            self.traverse(node.left, level + 1, dictionary)
+            self.traverse(node.right, level + 1, dictionary)
+        return dictionary
+
+
+# Iteration: BFS
 from collections import deque
 
 

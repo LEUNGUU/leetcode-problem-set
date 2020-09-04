@@ -26,6 +26,7 @@
 # All given inputs are in lowercase letters a-z.
 #
 # [End of Description]:
+# Binary search
 class Solution:
     def longestCommonPrefix(self, strs: List[str]) -> str:
         if len(strs) == 0:

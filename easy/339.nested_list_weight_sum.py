@@ -66,7 +66,7 @@
 #        :rtype List[NestedInteger]
 #        """
 
-
+# Depth-first Traversal
 class Solution:
     def depthSum(self, nestedList: List[NestedInteger]) -> int:
         return self.dfs(nestedList, 1)

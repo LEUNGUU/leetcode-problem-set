@@ -34,40 +34,42 @@
 #         self.right = right
 
 # DFS strategy (recursion)
-# class Solution:
-#     def minDepth(self, root: TreeNode) -> int:
-#         if not root:
-#             return 0
+class Solution:
+    def minDepth(self, root: TreeNode) -> int:
+        if not root:
+            return 0
 
-#         # we are at leaf node
-#         children = [root.left, root.right]
-#         if not any(children):
-#             return 1
+        # we are at leaf node
+        children = [root.left, root.right]
+        if not any(children):
+            return 1
 
-#         min_depth = float('inf')
-#         # check every child
-#         # min depth is always minimum
-#         for c in children:
-#             if c:
-#                 min_depth = min(self.minDepth(c), min_depth)
-#         return 1 + min_depth
+        min_depth = float("inf")
+        # check every child
+        # min depth is always minimum
+        for c in children:
+            if c:
+                min_depth = min(self.minDepth(c), min_depth)
+        return 1 + min_depth
+
 
 # DFS strategy (iteration)
-# class Solution:
-#     def minDepth(self, root: TreeNode) -> int:
-#         if not root:
-#             return 0
-#         else:
-#             stack, min_depth = [(1, root)], float('inf')
-#         while stack:
-#             depth, root = stack.pop()
-#             children = [root.left, root.right]
-#             if not any(children):
-#                 min_depth = min(depth, min_depth)
-#             for c in children:
-#                 if c:
-#                     stack.append((depth + 1, c))
-#         return min_depth
+class Solution:
+    def minDepth(self, root: TreeNode) -> int:
+        if not root:
+            return 0
+        else:
+            stack, min_depth = [(1, root)], float("inf")
+        while stack:
+            depth, root = stack.pop()
+            children = [root.left, root.right]
+            if not any(children):
+                min_depth = min(depth, min_depth)
+            for c in children:
+                if c:
+                    stack.append((depth + 1, c))
+        return min_depth
+
 
 # BFS strategy
 from collections import deque

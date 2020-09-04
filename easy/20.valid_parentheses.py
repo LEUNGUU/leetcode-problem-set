@@ -46,9 +46,14 @@
 # [End of Description]:
 class Solution:
     def isValid(self, s: str) -> bool:
+        # Hash map for keeping track of mappings. This keeps the code very clean.
+        # Also makes adding more types of parenthesis easier
         parentheses_map = {"(": ")", "[": "]", "{": "}"}
+        # the stack to keep track of opening brackets
         stack = []
+        # for every bracket in the expression
         for item in s:
+            # if the characters is an closing bracket
             if item in "({[":
                 stack.append(item)
             elif item in "]})":
@@ -58,7 +63,4 @@ class Solution:
                         return False
                 else:
                     return False
-        if not stack:
-            return True
-        else:
-            return False
+        return not stack

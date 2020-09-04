@@ -43,38 +43,56 @@
 #         self.left = None
 #         self.right = None
 # Recursive
-# class Solution:
-#     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
-#         root_val = root.val
-#         p_val = p.val
-#         q_val = q.val
+class Solution:
+    def lowestCommonAncestor(
+        self, root: "TreeNode", p: "TreeNode", q: "TreeNode"
+    ) -> "TreeNode":
+        # Value of current node or parent node
+        root_val = root.val
 
-#         # Both nodes are at the right of root
-#         if p_val > root_val and q_val > root_val:
-#             return self.lowestCommonAncestor(root.right, p, q)
-#         # Both nodes are at the left of root
-#         elif p_val < root_val and q_val < root_val:
-#             return self.lowestCommonAncestor(root.left, p, q)
-#         else:
-#             # Found it
-#             return root
+        # Value of p
+        p_val = p.val
+
+        # Value of q
+        q_val = q.val
+
+        # Both nodes are at the right of root(greater than parent)
+        if p_val > root_val and q_val > root_val:
+            return self.lowestCommonAncestor(root.right, p, q)
+        # Both nodes are at the left of root(lesser than parent)
+        elif p_val < root_val and q_val < root_val:
+            return self.lowestCommonAncestor(root.left, p, q)
+        # we have found the split point
+        else:
+            # Found it
+            return root
+
 
 # Iterative
 class Solution:
     def lowestCommonAncestor(
         self, root: "TreeNode", p: "TreeNode", q: "TreeNode"
     ) -> "TreeNode":
+        # Value of p
         p_val = p.val
+        # Value of q
         q_val = q.val
 
+        # Start from the root node of the tree
         node = root
 
+        # traverse the tree
         while node:
+
+            # Value of current node or parent
             root_val = node.val
 
             if p_val > root_val and q_val > root_val:
+                # If both p and q are greater than parent
                 node = node.right
             elif p_val < root_val and q_val < root_val:
+                # If bot p and q are lesser than parent
                 node = node.left
             else:
+                # Found it
                 return node

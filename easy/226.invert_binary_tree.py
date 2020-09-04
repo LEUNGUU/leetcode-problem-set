@@ -57,16 +57,16 @@ class Solution:
 
 
 # iterative
-# class Solution:
-#     def invertTree(self, root: TreeNode) -> TreeNode:
-#         if root is None:
-#             return root
-#         node_list = [root]
-#         while node_list:
-#             node = node_list.pop()
-#             node.left, node.right = node.right, node.left
-#             if node.left is not None:
-#                 node_list.append(node.left)
-#             if node.right is not None:
-#                 node_list.append(node.right)
-#         return root
+class Solution:
+    def invertTree(self, root: TreeNode) -> TreeNode:
+        if root is None:
+            return root
+        node_list = [root]
+        while node_list:
+            node = node_list.pop()
+            node.left, node.right = node.right, node.left
+            if node.left is not None:
+                node_list.append(node.left)
+            if node.right is not None:
+                node_list.append(node.right)
+        return root

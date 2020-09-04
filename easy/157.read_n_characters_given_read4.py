@@ -118,7 +118,7 @@ read4(buf) # read4 returns 4. Now buf = ['e','f','g','h'], fp points to 'i'
 read4(buf) # read4 returns 3. Now buf = ['i','j','k',...], fp points to end of file
 """
 
-
+# from discussion
 class Solution:
     def read(self, buf, n):
         """
@@ -137,3 +137,19 @@ class Solution:
             buf[read:] = temp[:cnt]
             read += cnt
         return read
+
+
+# Use internal buffer of 4 characters
+class Solution:
+    def read(self, buf, n) -> int:
+        copied_chars = 0
+        read_chars = 4
+        buf4 = [""] * 4
+        while copied_chars < n and read_chars == 4:
+            read_chars = read4(buf4)
+            for i in range(read_chars):
+                if copied_chars == n:
+                    return copied_chars
+                buf[copied_chars] = buf4[i]
+                copied_chars += 1
+        return copied_chars

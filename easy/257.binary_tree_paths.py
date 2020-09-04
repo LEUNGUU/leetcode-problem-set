@@ -33,20 +33,22 @@
 #         self.right = right
 
 # recursive
-# class Solution:
-#     def binaryTreePaths(self, root: TreeNode) -> List[str]:
-#         def buildpath(root, path):
-#             if root:
-#                 path = f"{path}{root.val}"
-#                 if not root.left and not root.right:
-#                     paths.append(path)
-#                 else:
-#                     path = f"{path}->"
-#                     buildpath(root.left, path)
-#                     buildpath(root.right, path)
-#         paths = []
-#         buildpath(root, '')
-#         return paths
+class Solution:
+    def binaryTreePaths(self, root: TreeNode) -> List[str]:
+        def buildpath(root, path):
+            if root:
+                path = f"{path}{root.val}"
+                if not root.left and not root.right:  # If reach a leaf
+                    paths.append(path)  # update paths
+                else:
+                    path = f"{path}->"  # extend the current path
+                    buildpath(root.left, path)
+                    buildpath(root.right, path)
+
+        paths = []
+        buildpath(root, "")
+        return paths
+
 
 # iterative
 class Solution:

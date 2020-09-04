@@ -49,6 +49,7 @@
 # concatenation of "12" and "11" which is "1211".
 #
 # [End of Description]:
+# Sliding Window
 class Solution:
     def countAndSay(self, n: int) -> str:
         return "".join(self.nextSequence(n, ["1", "E"]))
