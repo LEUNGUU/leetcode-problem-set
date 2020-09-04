@@ -24,15 +24,15 @@
 #
 # [End of Description]:
 # brute-force(Not Accepted)
-# class Solution:
-#     def shortestDistance(self, words: List[str], word1: str, word2: str) -> int:
-#         minimum = len(words)
-#         for index1, item1 in enumerate(words):
-#             if item1 == word1:
-#                 for index2, item2 in enumerate(words):
-#                     if item2 == word2:
-#                         minimum = min(minimum, abs(index1-index2))
-#         return minimum
+class Solution:
+    def shortestDistance(self, words: List[str], word1: str, word2: str) -> int:
+        minimum = len(words)
+        for index1, item1 in enumerate(words):
+            if item1 == word1:
+                for index2, item2 in enumerate(words):
+                    if item2 == word2:
+                        minimum = min(minimum, abs(index1-index2))
+        return minimum
 
 # one-pass, every time pointer meets the words, we count and take the minimum so far.
 class Solution:

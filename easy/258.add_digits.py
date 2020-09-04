@@ -19,17 +19,17 @@
 # Could you do it without any loop/recursion in O(1) runtime?
 #
 # [End of Description]:
-# class Solution:
-#     def addDigits(self, num: int) -> int:
-#         if len(str(num)) == 1:
-#             return num
-#         while len(str(num)) > 1:
-#             digits = []
-#             while num > 0:
-#                 num, digit = divmod(num, 10)
-#                 digits.append(digit)
-#             num = sum(digits)
-#         return num
+class Solution:
+    def addDigits(self, num: int) -> int:
+        if len(str(num)) == 1:
+            return num
+        while len(str(num)) > 1:
+            digits = []
+            while num > 0:
+                num, digit = divmod(num, 10)
+                digits.append(digit)
+            num = sum(digits)
+        return num
 
 # n mod 9 = (d0 + d1 + ... + dn) mode 9
 class Solution:

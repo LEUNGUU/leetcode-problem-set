@@ -74,19 +74,19 @@ class Solution:
 #
 # dp[i]=dp[i-1]+dp[i-2]
 
-# class Solution:
-#     def climbStairs(self, n: int) -> int:
-#         # n+1 means we need to include number n
-#         dp = [0] * (n + 1)
-#         if n == 1:
-#             return 1
-#         # we begin from 1 means we at least take 1 step
-#         dp[1] = 1
-#         dp[2] = 2
-#         for item in range(3, len(dp)):
-#             # len(dp) already include number n
-#             dp[item] = dp[item - 1] + dp[item - 2]
-#         return dp[n]
+class Solution:
+    def climbStairs(self, n: int) -> int:
+        # n+1 means we need to include number n
+        dp = [0] * (n + 1)
+        if n == 1:
+            return 1
+        # we begin from 1 means we at least take 1 step
+        dp[1] = 1
+        dp[2] = 2
+        for item in range(3, len(dp)):
+            # len(dp) already include number n
+            dp[item] = dp[item - 1] + dp[item - 2]
+        return dp[n]
 
 # Fibonacci Number
 # It is clearly that the number n is the nth fibonacci number

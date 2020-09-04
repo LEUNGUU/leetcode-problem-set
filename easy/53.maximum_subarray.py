@@ -28,11 +28,13 @@
 # divide and conquer
 # If n == 1 : return this single element.
 #
-# left_sum = maxSubArray for the left subarray, i.e. for the first n/2 numbers (middle element at index (left + right) / 2 always belongs to the left subarray).
+# left_sum = maxSubArray for the left subarray,
+# i.e. for the first n/2 numbers (middle element at index (left + right) / 2 always belongs to the left subarray).
 #
 # right_sum = maxSubArray for the right subarray, i.e. for the last n/2 numbers.
 #
-# cross_sum = maximum sum of the subarray containing elements from both left and right subarrays and hence crossing the middle element at index (left + right) / 2.
+# cross_sum = maximum sum of the subarray containing elements from both left and right
+# subarrays and hence crossing the middle element at index (left + right) / 2.
 #
 # Merge the subproblems solutions, i.e. return max(left_sum, right_sum, cross_sum).
 class Solution:

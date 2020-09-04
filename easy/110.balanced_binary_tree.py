@@ -54,19 +54,20 @@
 #         self.right = right
 
 # top down solution
-# class Solution:
-#     def height(self, node: TreeNode) -> int:
-#         if not node:
-#             return -1
-#         # recursive calculate the height
-#         return 1 + max(self.height(node.left), self.height(node.right))
-#
-#
-#     def isBalanced(self, root: TreeNode) -> bool:
-#         if not root:
-#             return True
-#         # every subtree must be balanced
-#         return abs(self.height(root.left) - self.height(root.right)) < 2 and self.isBalanced(root.left) and self.isBalanced(root.right)
+class Solution:
+    def height(self, node: TreeNode) -> int:
+        if not node:
+            return -1
+        # recursive calculate the height
+        return 1 + max(self.height(node.left), self.height(node.right))
+
+
+    def isBalanced(self, root: TreeNode) -> bool:
+        if not root:
+            return True
+        # every subtree must be balanced
+        return abs(self.height(root.left) - self.height(root.right)) < 2 \
+                and self.isBalanced(root.left) and self.isBalanced(root.right)
 
 # bottom up solution
 class Solution:

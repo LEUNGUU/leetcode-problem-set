@@ -24,19 +24,19 @@
 #
 # [End of Description]:
 # brute force(cannot submit due to timeout)
-# class Solution:
-#     def trailingZeroes(self, n: int) -> int:
-#         if n == 0:
-#             return 0
-#         else:
-#             res = math.factorial(n)
-#             times = 0
-#             while res > 0:
-#                 if (res % 10) != 0:
-#                     break
-#                 times += 1
-#                 res //= 10
-#             return times
+class Solution:
+    def trailingZeroes(self, n: int) -> int:
+        if n == 0:
+            return 0
+        else:
+            res = math.factorial(n)
+            times = 0
+            while res > 0:
+                if (res % 10) != 0:
+                    break
+                times += 1
+                res //= 10
+            return times
 
 
 class Solution:
