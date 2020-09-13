@@ -58,6 +58,7 @@ class Solution:
         if n == 1:
             return prevSeq[:-1]
 
+        print(f"n is {n}, prevSeq is {prevSeq}")
         nextSeq = []
         preDigit = prevSeq[0]
         digitcnt = 1
@@ -69,4 +70,9 @@ class Solution:
                 preDigit = digit
                 digitcnt = 1
         nextSeq.append("E")
+        print(f"before rerutn, nextSeq is {nextSeq}")
         return self.nextSequence(n - 1, nextSeq)
+
+
+if __name__ == "__main__":
+    print(Solution().countAndSay(5))
