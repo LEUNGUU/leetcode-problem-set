@@ -27,9 +27,11 @@ class Solution:
         window = defaultdict(int)
         need = Counter(t)
 
+        # initial two pointer
         left = right = 0
         valid = 0
 
+        # mark the first index and length
         start = 0
         n = float("inf")
 
@@ -43,10 +45,10 @@ class Solution:
                     valid += 1
 
             while valid == len(need):
+                # markdown the length first
                 if right - left < n:
                     start = left
                     n = right - left
-                    print(n)
 
                 d = s[left]
                 left += 1
@@ -55,6 +57,4 @@ class Solution:
                     if window[d] == need[d]:
                         valid -= 1
                     window[d] -= 1
-        print(f"left is {left}")
-        print(f"n is {n}")
-        return s[left : left + n]
+        return "" if n == float("inf") else s[start : start + n]
