@@ -71,9 +71,9 @@ class Solution:
         return maxProfit
 
 
-# a mathmatics trick here
-# peak1 - valley1 + peak2 - valley2
-# p1-p0+p2-p1+p3-p2+...+p(n)-p(n-1) = p(n) - p0
+## a mathmatics trick here
+## peak1 - valley1 + peak2 - valley2
+## p1-p0+p2-p1+p3-p2+...+p(n)-p(n-1) = p(n) - p0
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
         maxProfit = 0
@@ -81,3 +81,17 @@ class Solution:
             if prices[i] > prices[i - 1]:
                 maxProfit += prices[i] - prices[i - 1]
         return maxProfit
+
+
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        dp_i_0 = 0
+        dp_i_1 = -float("inf")
+        n = len(prices)
+        for i in range(n):
+            # markdown the previous one
+            # which is different from the second dp_i_0
+            temp = dp_i_0
+            dp_i_0 = max(dp_i_0, dp_i_1 + prices[i])
+            dp_i_1 = max(dp_i_1, temp - prices[i])
+        return dp_i_0
