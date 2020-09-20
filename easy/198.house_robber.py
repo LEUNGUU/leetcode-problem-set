@@ -51,11 +51,46 @@
 # 2. Do not rob the third house, and stick with the maximum amount of the first two houses.
 # f(k) = max(f(k – 2) + Ak, f(k – 1))
 # We choose base case asd f(-1) = f(0) = 0
+#class Solution:
+#    def rob(self, nums: List[int]) -> int:
+#        first_sum, second_sum = 0, 0
+#        for item in nums:
+#            cur_sum = max(first_sum + item, second_sum)
+#            first_sum = second_sum
+#            second_sum = cur_sum
+#        return second_sum
+
+# class Solution:
+#     def rob(self, nums: List[int]) -> int:
+#
+#         def dp(nums: List[int], start: int, memo: List[int]):
+#             if start >= len(nums):
+#                 return 0
+#             if memo[start] != -1:
+#                 return memo[start]
+#
+#             memo[start] = max(dp(nums, start + 1, memo), nums[start] + dp(nums, start + 2, memo))
+#             return memo[start]
+#
+#         # memory
+#         memo = [-1] * len(nums)
+#         return dp(nums, 0, memo)
+
+
+# class Solution:
+#     def rob(self, nums: List[int]) -> int:
+#         dp= [-1] * len(nums)
+#         for i in range(len(nums)-1, -1, -1):
+#             dp[i] = max(dp[i + 1], dp[i + 2] + nums[i])
+#         return dp[0]
+
 class Solution:
     def rob(self, nums: List[int]) -> int:
-        first_sum, second_sum = 0, 0
+        dp_i_1 = dp_i_2 = dp_i = 0
         for item in nums:
-            cur_sum = max(first_sum + item, second_sum)
-            first_sum = second_sum
-            second_sum = cur_sum
-        return second_sum
+            dp_i = max(dp_i_1, dp_i_2 + item)
+            dp_i_2 = dp_i_1
+            dp_i_1 = dp_i
+        return dp_i
+
+
