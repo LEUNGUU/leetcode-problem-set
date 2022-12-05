@@ -62,6 +62,7 @@ class Solution:
             times += 1
         return res
 
+
 # right-to-left
 class Solution:
     def titleToNumber(self, s: str) -> int:
@@ -73,8 +74,9 @@ class Solution:
         n = len(s)
         for i in range(n):
             cur_char = s[n - 1 - i]
-            result += (alpha_map[cur_char] * (26 ** i))
+            result += alpha_map[cur_char] * (26**i)
         return result
+
 
 # left-to-right
 class Solution:
@@ -83,5 +85,5 @@ class Solution:
         n = len(s)
         for i in range(n):
             result = result * 26
-            result += (ord(s[i]) - ord('A') + 1)
+            result += ord(s[i]) - ord("A") + 1
         return result

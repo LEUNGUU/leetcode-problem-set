@@ -1,64 +1,60 @@
-# 3Sum
+# 4Sum
 #
-# [Medium] [AC:27.1% 1M of 3.8M] [filetype:python3]
+# [Medium] [AC:33.9% 352.6K of 1M] [filetype:python3]
 #
-# Given an array nums of n integers, are there elements a, b, c in nums such that a + b + c = 0? Find all unique
-# triplets in the array which gives the sum of zero.
+# Given an array nums of n integers and an integer target, are there elements a, b, c, and d in nums such that
+# a + b + c + d = target? Find all unique quadruplets in the array which gives the sum of target.
 #
-# Notice that the solution set must not contain duplicate triplets.
+# Note:
 #
-# Example 1:
+# The solution set must not contain duplicate quadruplets.
 #
-# Input: nums = [-1,0,1,2,-1,-4]
+# Example:
 #
-# Output: [[-1,-1,2],[-1,0,1]]
+# Given array nums = [1, 0, -1, 0, -2, 2], and target = 0.
 #
-# Example 2:
+# A solution set is:
 #
-# Input: nums = []
+# [
 #
-# Output: []
+#   [-1,  0, 0, 1],
 #
-# Example 3:
+#   [-2, -1, 1, 2],
 #
-# Input: nums = [0]
+#   [-2,  0, 0, 2]
 #
-# Output: []
-#
-# Constraints:
-#
-# 0 <= nums.length <= 3000
-#
-# -105 <= nums[i] <= 105
+# ]
 #
 # [End of Description]:
 class Solution:
-    def threeSum(self, nums: List[int]) -> List[List[int]]:
+    def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
         sorted_nums = sorted(nums)
-        return self.nSumTarget(sorted_nums, 3, 0, 0)
+        return self.nSumTarget(sorted_nums, 4, 0, target)
 
-    def nSumTarget(self, nums: List[int], n: int, start: int, target: int) -> List[List[int]]:
+    def nSumTarget(
+        self, nums: List[int], n: int, start: int, target: int
+    ) -> List[List[int]]:
         sz = len(nums)
-        res: List[List[int]] = []
+        res = []
         if n < 2 or sz < n:
             return res
         if n == 2:
             lo = start
-            hi = sz -1
+            hi = sz - 1
             while lo < hi:
                 total = nums[lo] + nums[hi]
                 left = nums[lo]
                 right = nums[hi]
-                if total == target:
-                    res.append([left, right])
-                    while lo < hi and nums[lo] == left:
-                        lo += 1
+                if total > target:
                     while lo < hi and nums[hi] == right:
                         hi -= 1
                 elif total < target:
                     while lo < hi and nums[lo] == left:
                         lo += 1
-                elif total > target:
+                elif total == target:
+                    res.append([left, right])
+                    while lo < hi and nums[lo] == left:
+                        lo += 1
                     while lo < hi and nums[hi] == right:
                         hi -= 1
         else:
@@ -72,7 +68,3 @@ class Solution:
                     i += 1
                 i += 1
         return [sorted(item) for item in res]
-
-
-
-

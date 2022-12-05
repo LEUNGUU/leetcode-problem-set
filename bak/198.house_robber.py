@@ -51,7 +51,7 @@
 # 2. Do not rob the third house, and stick with the maximum amount of the first two houses.
 # f(k) = max(f(k – 2) + Ak, f(k – 1))
 # We choose base case asd f(-1) = f(0) = 0
-#class Solution:
+# class Solution:
 #    def rob(self, nums: List[int]) -> int:
 #        first_sum, second_sum = 0, 0
 #        for item in nums:
@@ -84,6 +84,7 @@
 #             dp[i] = max(dp[i + 1], dp[i + 2] + nums[i])
 #         return dp[0]
 
+
 class Solution:
     def rob(self, nums: List[int]) -> int:
         dp_i_1 = dp_i_2 = dp_i = 0
@@ -92,5 +93,3 @@ class Solution:
             dp_i_2 = dp_i_1
             dp_i_1 = dp_i
         return dp_i
-
-

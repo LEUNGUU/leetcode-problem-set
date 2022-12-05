@@ -54,6 +54,7 @@ class Solution:
 
         return "".join(result)
 
+
 # Bit Manipulation
 class Solution:
     def addBinary(self, a, b) -> str:
@@ -61,4 +62,3 @@ class Solution:
         while y:
             x, y = x ^ y, (x & y) << 1
         return bin(x)[2:]
-

@@ -87,7 +87,7 @@ values = {
     "XL": 40,
     "XC": 90,
     "CD": 400,
-    "CM": 900
+    "CM": 900,
 }
 # left-to-right pass
 class Solution:
@@ -105,6 +105,7 @@ class Solution:
                 i += 1
         return total
 
+
 # Left-to-Right Pass Improved
 class Solution:
     def romanToInt(self, s: str) -> int:
@@ -112,13 +113,14 @@ class Solution:
         i = 0
         while i < len(s):
             # This is the subtractive case.
-            if i < len(s) - 1 and s[i:i+2] in values:
-                total += values[s[i:i+2]]
+            if i < len(s) - 1 and s[i : i + 2] in values:
+                total += values[s[i : i + 2]]
                 i += 2
             else:
                 total += values[s[i]]
                 i += 1
         return total
+
 
 # Right-to-Left Pass
 class Solution:
@@ -130,4 +132,3 @@ class Solution:
             else:
                 total += values[s[i]]
         return total
-

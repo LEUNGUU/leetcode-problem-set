@@ -44,7 +44,7 @@ class Solution:
         total = 0
         while n > 0:
             n, digits = divmod(n, 10)
-            total += digits ** 2
+            total += digits**2
         return total
 
 
@@ -67,5 +67,5 @@ class Solution:
         total = 0
         while n > 0:
             n, digits = divmod(n, 10)
-            total += digits ** 2
+            total += digits**2
         return total

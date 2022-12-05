@@ -31,8 +31,9 @@ class Solution:
             if item1 == word1:
                 for index2, item2 in enumerate(words):
                     if item2 == word2:
-                        minimum = min(minimum, abs(index1-index2))
+                        minimum = min(minimum, abs(index1 - index2))
         return minimum
+
 
 # one-pass, every time pointer meets the words, we count and take the minimum so far.
 class Solution:

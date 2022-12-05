@@ -90,7 +90,11 @@ class Solution:
                 return False
             return True
 
-        deq = deque([(p, q),])
+        deq = deque(
+            [
+                (p, q),
+            ]
+        )
         while deq:
             p, q = deq.popleft()
             if not check(p, q):

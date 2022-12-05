@@ -71,13 +71,16 @@
 #         memo[root] = max(do_it, not_do)
 #         return memo[root]
 
+
 class Solution:
     def rob(self, root: TreeNode) -> int:
         def dp(root: TreeNode):
             if root is None:
                 return [0, 0]
             do_it = root.val + dp(root.left)[0] + dp(root.right)[0]
-            not_do = max(dp(root.left)[0], dp(root.left)[1]) + max(dp(root.right)[0], dp(root.right)[1])
+            not_do = max(dp(root.left)[0], dp(root.left)[1]) + max(
+                dp(root.right)[0], dp(root.right)[1]
+            )
             return [not_do, do_it]
-        return max(dp(root)[0], dp(root)[1])
 
+        return max(dp(root)[0], dp(root)[1])

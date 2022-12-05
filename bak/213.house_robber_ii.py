@@ -40,9 +40,8 @@ class Solution:
                 dp_i_2 = dp_i_1
                 dp_i_1 = dp_i
             return dp_i
+
         n = len(nums)
         if n == 1:
             return nums[0]
         return max(robRange(nums, 0, n - 1), robRange(nums, 1, n))
-
-

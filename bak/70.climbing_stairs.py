@@ -74,6 +74,7 @@ class Solution:
 #
 # dp[i]=dp[i-1]+dp[i-2]
 
+
 class Solution:
     def climbStairs(self, n: int) -> int:
         # n+1 means we need to include number n
@@ -87,6 +88,7 @@ class Solution:
             # len(dp) already include number n
             dp[item] = dp[item - 1] + dp[item - 2]
         return dp[n]
+
 
 # Fibonacci Number
 # It is clearly that the number n is the nth fibonacci number

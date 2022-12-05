@@ -90,7 +90,7 @@ class Solution:
         # base value for the rolling hash function
         a = 26
         # modulus value for the rolling hash function to avoid overflow
-        modulus = 2 ** 31
+        modulus = 2**31
         # lambda-function to convert character to integer
         h_to_int = lambda i: ord(haystack[i]) - ord("a")
         needle_to_int = lambda i: ord(needle[i]) - ord("a")

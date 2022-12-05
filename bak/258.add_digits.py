@@ -31,6 +31,7 @@ class Solution:
             num = sum(digits)
         return num
 
+
 # n mod 9 = (d0 + d1 + ... + dn) mode 9
 class Solution:
     def addDigits(self, num: int) -> int:

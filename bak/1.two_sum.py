@@ -29,6 +29,8 @@ class Solution:
                 return [result[res], index]
             else:
                 result[value] = index
+
+
 #
 #
 # # two-pass hash table [Accepted]
@@ -41,6 +43,8 @@ class Solution:
             res = target - nums[index]
             if res in nums_dict and nums_dict[res] != index:
                 return [index, nums_dict[res]]
+
+
 #
 #
 # # Bruce Force [Not Accepted, Time exceeded]
@@ -51,12 +55,13 @@ class Solution:
                 if nums[idx1] + nums[idx2] == target:
                     return [idx1, idx2]
 
+
 # two pointers
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         sorted_nums = sorted(nums)
         lo = 0
-        hi = len(nums) -1
+        hi = len(nums) - 1
         while lo < hi:
             total = sorted_nums[lo] + sorted_nums[hi]
             left = sorted_nums[lo]
@@ -74,5 +79,3 @@ class Solution:
                         res.append(index)
                 return res
         return []
-
-
