@@ -2,8 +2,12 @@ from group_anagram import Solution
 
 
 testcase = [
-    {"testcase": ["eat", "ate", "ant", "tna"], "result": [["eat", "ate"], ["ant", "tna"]]}
+    {
+        "testcase": ["eat", "ate", "ant", "tna"],
+        "result": [["eat", "ate"], ["ant", "tna"]],
+    }
 ]
+
 
 def test_group_anagram():
     for tc in testcase:

@@ -6,6 +6,7 @@ testcases = [
     {"testcase": [2, 4, 8], "target": 10, "result": [0, 2]},
 ]
 
+
 def test_two_sum():
     for tc in testcases:
         target = tc["target"]
