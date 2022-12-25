@@ -1,8 +1,7 @@
 from minimum_window_substr import Solution
 
-testcase = [
-    {"testcase": ("ADOBECODEBANC", "ABC"), "result": "BANC"}
-]
+testcase = [{"testcase": ("ADOBECODEBANC", "ABC"), "result": "BANC"}]
+
 
 def test_minimum_window_substr():
     for tc in testcase:
