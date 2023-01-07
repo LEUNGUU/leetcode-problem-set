@@ -23,7 +23,9 @@ def test_time_based_kv_store():
         res = []
         for index in range(op_times):
             if tc["op"][index] == "set":
-                tm.set(tc["value"][index][0], tc["value"][index][1], tc["value"][index][2])
+                tm.set(
+                    tc["value"][index][0], tc["value"][index][1], tc["value"][index][2]
+                )
                 res.append("")
             else:
                 res.append(tm.get(tc["value"][index][0], tc["value"][index][1]))
