@@ -37,6 +37,7 @@
 #         self.left = left
 #         self.right = right
 
+
 # DFS strategy
 class Solution:
     def hasPathSum(self, root: TreeNode, sum: int) -> bool:

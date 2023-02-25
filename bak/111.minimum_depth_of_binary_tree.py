@@ -33,6 +33,7 @@
 #         self.left = left
 #         self.right = right
 
+
 # DFS strategy (recursion)
 class Solution:
     def minDepth(self, root: TreeNode) -> int:

@@ -22,6 +22,7 @@
 #         self.val = val
 #         self.next = next
 
+
 # iteratively
 class Solution:
     def reverseList(self, head: ListNode) -> ListNode:

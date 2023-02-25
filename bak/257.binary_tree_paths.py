@@ -32,6 +32,7 @@
 #         self.left = left
 #         self.right = right
 
+
 # recursive
 class Solution:
     def binaryTreePaths(self, root: TreeNode) -> List[str]:

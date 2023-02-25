@@ -83,7 +83,6 @@ class Solution:
 
         # traverse the tree
         while node:
-
             # Value of current node or parent
             root_val = node.val
 

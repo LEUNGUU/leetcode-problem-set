@@ -118,6 +118,7 @@ read4(buf) # read4 returns 4. Now buf = ['e','f','g','h'], fp points to 'i'
 read4(buf) # read4 returns 3. Now buf = ['i','j','k',...], fp points to end of file
 """
 
+
 # from discussion
 class Solution:
     def read(self, buf, n):

@@ -45,6 +45,7 @@
 #         self.val = x
 #         self.next = None
 
+
 # Hash Tables
 # list to record nodes' references
 class Solution:

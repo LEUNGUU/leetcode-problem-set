@@ -65,6 +65,7 @@
 #         self.val = x
 #         self.next = None
 
+
 #  we can have brute force and hash table solution
 # Two pointer
 class Solution:

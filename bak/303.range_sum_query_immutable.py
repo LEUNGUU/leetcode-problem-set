@@ -28,6 +28,7 @@
 #
 # [End of Description]:
 
+
 # Not a formal solution, my own one
 class NumArray:
     def __init__(self, nums: List[int]):

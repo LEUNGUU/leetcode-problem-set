@@ -18,6 +18,7 @@
 #         self.val = val
 #         self.next = next
 
+
 # add a sentinel node(sentinel stand still, pre and cur go through the list)
 class Solution:
     def removeElements(self, head: ListNode, val: int) -> ListNode:

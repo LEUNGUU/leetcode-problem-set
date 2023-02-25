@@ -31,6 +31,7 @@
 #
 # [End of Description]:
 
+
 # Detect cycle with hashset(we use set here due to justify an element in set cost O(1))
 class Solution:
     def isHappy(self, n: int) -> bool:

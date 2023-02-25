@@ -48,6 +48,7 @@
 #
 # [End of Description]:
 
+
 # brute force(Not Accepted, Time Limit Exceeded)
 class Solution:
     def rotate(self, nums: List[int], k: int) -> None:

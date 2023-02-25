@@ -66,6 +66,7 @@
 
 # Two Pointers(in case of the array is already sorted)
 
+
 # while loop version
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:

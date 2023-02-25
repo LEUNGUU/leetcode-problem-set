@@ -32,6 +32,7 @@
 #     def mySqrt(self, x: int) -> int:
 #         return int(sqrt(x))
 
+
 # a mathmatics method
 # sqrt(x) = e** (1/2) * log(x)
 class Solution:

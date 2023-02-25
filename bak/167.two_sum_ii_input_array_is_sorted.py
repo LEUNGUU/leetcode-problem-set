@@ -25,6 +25,7 @@
 #
 # [End of Description]:
 
+
 # two pointer
 # since the array is sorted in ascending order, then we can use two pointer
 # one from small to large, the other from large to small

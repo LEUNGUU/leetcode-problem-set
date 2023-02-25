@@ -30,6 +30,7 @@
 #
 # [End of Description]:
 
+
 # Dynamic Programming
 class Solution:
     def generate(self, numRows: int) -> List[List[int]]:

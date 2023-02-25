@@ -22,6 +22,7 @@
 #
 # [End of Description]:
 
+
 # brute force(Not Accepted, Timeout)
 class Solution:
     def majorityElement(self, nums: List[int]) -> int:

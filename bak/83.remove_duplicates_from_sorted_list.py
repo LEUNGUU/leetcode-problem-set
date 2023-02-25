@@ -24,6 +24,7 @@
 #         self.val = val
 #         self.next = next
 
+
 # Straight-Forward
 class Solution:
     def deleteDuplicates(self, head: ListNode) -> ListNode:

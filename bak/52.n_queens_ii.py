@@ -42,7 +42,6 @@ from typing import List
 class Solution:
     def totalNQueens(self, n: int) -> int:
         def backtrack(board: List[List[str]], row: int) -> None:
-
             # check if it is ended
             if len(board) == row:
                 # change list to str to match the result

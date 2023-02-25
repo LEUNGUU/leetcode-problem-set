@@ -23,6 +23,7 @@
 #
 # [End of Description]:
 
+
 # Sorting
 # It is easy to find which number is missing.
 class Solution:

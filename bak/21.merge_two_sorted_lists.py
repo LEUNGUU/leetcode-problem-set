@@ -21,6 +21,7 @@
 #         self.val = val
 #         self.next = next
 
+
 # Recursion
 class Solution:
     def mergeTwoLists(self, l1: ListNode, l2: ListNode) -> ListNode:
